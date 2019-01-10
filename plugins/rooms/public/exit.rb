@@ -1,6 +1,6 @@
 module AresMUSH
   class Exit    
-    attribute :lock_keys, :type => DataType::Array, :default => []
+    attribute :lock_keys, :type => DataType::Array, :default => '<>'
     
     def allow_passage?(char)
       return false if (self.lock_keys == Rooms.interior_lock)
