@@ -13,7 +13,7 @@ module AresMUSH
     end
     
     def right_border
-      right('', (70 - 9 - text.length)/3 , self.pad_char)
+      right('', (20 - 9 - text.length)/3 , self.pad_char)
     end
     
     def color
