@@ -60,3 +60,7 @@ You can use the [page](/help/page) command to send private messages to other pla
 
 Good luck and have fun!
 
+## Last, last note.
+
+WHIRLPOOL IS SUPER STINKY! :|
+
