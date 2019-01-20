@@ -11,7 +11,7 @@ module AresMUSH
 			
 			def handle
 				enactor.update(goals: self.goals)
-				client.emit_success "%%Goals set!"
+				client.emit_success "Goals set!"
 			end
 		end
 	end
