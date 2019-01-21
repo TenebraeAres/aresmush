@@ -17,7 +17,7 @@ module AresMUSH
 			
 			def handle
 				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-					template = BorderedDisplayTemplate.new model.goals "#{model.name}'s Goals"
+					template = BorderedDisplayTemplate.new model.goals, "#{model.name}'s Goals"
 					client.emit template.render
 				end
 			end
