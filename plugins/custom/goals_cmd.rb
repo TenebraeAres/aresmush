@@ -1,6 +1,6 @@
 module AresMUSH
 	module Custom
-		class GolasCmd
+		class GoalsCmd
 			include CommandHandler
 			
 			attr_accessor :name
