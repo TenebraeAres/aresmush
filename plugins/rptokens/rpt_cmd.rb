@@ -14,7 +14,7 @@ module AresMUSH
 			end
 
 			def handle
-				client.emit_success "RP Tokens: #{self.title} #{self.desc}"
+				Jobs.create_job("RPT", self.title, self.desc, enactor)
 			end
 		end
 	end
