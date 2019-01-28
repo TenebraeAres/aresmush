@@ -8,6 +8,6 @@ module AresMUSH
 		attribute :awarder
 		attribute :date
 		
-		index :name
+		index :reason
 	end
 end
