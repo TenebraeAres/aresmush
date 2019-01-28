@@ -28,7 +28,7 @@ module AresMUSH
 			def handle
 				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
 					client.emit_success "RP Tokens: #{model.name} #{self.number} #{self.reason}"
-					model.update(rpt: model.rpt + self.number)
+					## model.update(rpt: model.rpt + self.number)
 				end
 			end
 		end
