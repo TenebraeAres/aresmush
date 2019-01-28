@@ -28,7 +28,7 @@ module AresMUSH
 				end
 				ClassTargetFinder.with_a_character(job.author_name, client, enactor) do |model|
 					model.update(rpt: model.rpt + 1)
-					client.emit_success "RPT Approved: Job#" + job
+					client.emit_success "RPT Approved: Job# #{job.id}"
 				end
 				Jobs.close_job(enactor, job, self.reason)
 			end
