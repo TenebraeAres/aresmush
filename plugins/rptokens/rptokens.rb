@@ -5,13 +5,13 @@ module AresMUSH
     end
 	def self.get_cmd_handler(client, cmd, enactor)
 		case cmd.root
-		def parse_args
-			when "rpt"
-				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-				if arg2.any?
-					return RPTCmd
-				end
+		when "rpt"
+		def parse_args	
+			args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+			if arg2.any?
+				return RPTCmd
 			end
+		end
 		end
 		return nil
 	end
