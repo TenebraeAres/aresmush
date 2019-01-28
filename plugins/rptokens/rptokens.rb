@@ -8,9 +8,9 @@ module AresMUSH
 		when "rpt"
 			case cmd.switch
 			when "add"
-				return RPTAddCmd(0)
+				return RPTAddCmd
 			when "spend" || "sub"
-				return RPTAddCmd(1)
+				return RPTAddCmd
 			when "app"
 				return RPTApproveCmd
 			else
