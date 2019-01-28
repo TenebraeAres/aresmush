@@ -6,9 +6,9 @@ module AresMUSH
 			
 			def parse_args
 				if (!cmd.args)
-					self.name = cmd.args
-				else
 					self.name = enactor.name
+				else
+					self.name = cmd.args
 				end
 			end
 
