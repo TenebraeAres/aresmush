@@ -10,7 +10,7 @@ module AresMUSH
 			end
 			
 			def parse_args	
-				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+				args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
 				self.number = integer_arg(args.arg1)
 				self.reason = "%xgApproved!%xn %r%r" + args.arg2
 			end
