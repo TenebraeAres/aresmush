@@ -2,13 +2,11 @@ module AresMUSH
 	module RPTokens
 		class RPTCmd
 			include CommandHandler
+			attr_accessor :title, :desc
 			def parse_args	
-				args = self.parse_args(ArgParser.arg1_equals_arg2)
-				if arg2.any?					
-				else
-					client.emit_fail "RPTokens Failure!"
-					return nil
-				end
+				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+				self.title = args.arg1
+				self.desc = args.arg2
 			end
 			
 			def handle
