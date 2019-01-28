@@ -15,7 +15,7 @@ module AresMUSH
 			end
 
 			def handle
-				if self.number = 0
+				if self.number == 0
 					client.emit_failure "Needs a valid number of RPTokens"
 				else
 					client.emit_success "RP Tokens: #{self.name} #{self.number} #{self.reason}" 
