@@ -3,6 +3,12 @@ module AresMUSH
 		class RPTAddCmd
 			include CommandHandler
 			attr_accessor :name, :number, :reason
+			
+			def check_approved
+				return nil if enactor.is_admin?
+				return t('dispatcher.not_allowed')
+			end
+			
 			def parse_args	
 				args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
 				self.name = Character.find_one_by_name(args.arg1)
@@ -12,6 +18,7 @@ module AresMUSH
 
 			def required_args
 				[self.name, self.number, self.reason]
+				self.name.zero? client.emit_failure "Needs a valid player."
 			end
 
 			def handle

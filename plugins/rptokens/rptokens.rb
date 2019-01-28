@@ -9,6 +9,8 @@ module AresMUSH
 			case cmd.switch
 			when "add"
 				return RPTAddCmd
+			when "app"
+				return RPTApproveCmd
 			else
 				return RPTCmd
 			end
