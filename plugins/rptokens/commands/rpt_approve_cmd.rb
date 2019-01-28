@@ -22,12 +22,12 @@ module AresMUSH
 			def handle
 				job = Job[self.number]
 				if (!job)
-					client.emit_falure "That's not a valid job number!"
+					client.emit_failure "That's not a valid job number!"
 					return
 				end
 				
 				if (job.category != "RPT")
-					client.emit_falure "That's not an RPT job!"
+					client.emit_failure "That's not an RPT job!"
 					return
 				end
 				
