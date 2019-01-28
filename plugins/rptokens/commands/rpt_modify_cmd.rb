@@ -35,7 +35,7 @@ module AresMUSH
 						message = t('rpt.tokens_subtracted_from', :num => self.number, :name => model.name)
 					end
 					client.emit_success message
-					model.update(rpt: model.rpt.to_i + self.number)
+					model.update(rpt: model.rpt + tokens_to_add)
 				end
 			end
 		end
