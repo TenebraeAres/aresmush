@@ -3,7 +3,7 @@
 <%= divider %>
 <% char.rpt_log.each do |log| %>
 <%= left( "#{log.reason}", 34 ) -%>
-<%= left( "{log.value}", 5 ) -%>
+<%= left( "#{log.value}", 5 ) -%>
 <%= left( "#{log.awarder}", 14 ) -%>
 <%= left( "#{log.date}", 24 ) -%>
 <% end %>
