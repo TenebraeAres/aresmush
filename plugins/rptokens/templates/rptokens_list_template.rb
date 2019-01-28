@@ -1,5 +1,5 @@
 module AresMUSH
-	module Jobs
+	module RPTokens
 		# Template for the list of RPTokens.
 		class RPTokensListTemplate < ErbTemplateRenderer
 	
