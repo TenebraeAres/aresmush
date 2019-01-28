@@ -1,5 +1,6 @@
 module AresMUSH
   module RPTokens
+	include ArgParser
     def self.plugin_dir
       File.dirname(__FILE__)
     end
