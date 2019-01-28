@@ -17,8 +17,10 @@ module AresMUSH
 			end
 
 			def required_args
+				if self.name == 0 
+					client.emit_failure "Needs a valid player."
+				end
 				[self.name, self.number, self.reason]
-				self.name.zero? client.emit_failure "Needs a valid player."
 			end
 
 			def handle
