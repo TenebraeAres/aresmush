@@ -21,7 +21,7 @@ module AresMUSH
 
 			def handle
 				job = Job[self.number]
-				if (job == 0)
+				if (job.is_open? == false)
 					client.emit_failure "That's not a valid job number!"
 					return
 				end
