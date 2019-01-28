@@ -19,6 +19,7 @@ module AresMUSH
 					client.emit_fail "Needs a valid number of RPTokens"
 				else
 					client.emit_success "RP Tokens: #{self.name} #{self.number} #{self.reason}" 
+				end
 			end
 		end
 	end
