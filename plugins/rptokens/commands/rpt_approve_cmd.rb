@@ -12,11 +12,7 @@ module AresMUSH
 			def parse_args	
 				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
 				self.number = integer_arg(args.arg1)
-				self.reason = args.arg2
-			end
-			
-			def check_reason
-				self.reason = "%xgApproved!%xn" if self.reason == 0
+				self.reason = "%xgApproved!%xn %r%r" + args.arg2
 			end
 
 			def handle
