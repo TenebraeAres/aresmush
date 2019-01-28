@@ -27,11 +27,7 @@ module AresMUSH
 
 			def handle
 				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-					if self.number == 0
-						client.emit_failure "Needs a valid number of RPTokens"
-					else
-						client.emit_success "RP Tokens: #{model.name} #{self.number} #{self.reason}" 
-					end
+					client.emit_success "RP Tokens: #{model.name} #{self.number} #{self.reason}" 
 				end
 			end
 		end

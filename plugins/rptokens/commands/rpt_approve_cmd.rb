@@ -12,7 +12,7 @@ module AresMUSH
 			def parse_args	
 				args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
 				self.number = integer_arg(args.arg1)
-				self.reason = "%xgApproved!%xn %r%r" + args.arg2.to_s
+				self.reason = "Approved!%r%r" + args.arg2.to_s
 			end
 
 			def handle
@@ -27,7 +27,7 @@ module AresMUSH
 					return
 				end
 				
-				client.emit_success "RPT Approved: #{self.number} #{self.reason}" 
+				client.emit_success "RPT Approved: #{self.number} #{self.reason} #{job.author_name}" 
 			end
 		end
 	end
