@@ -6,8 +6,8 @@ module AresMUSH
 	def self.get_cmd_handler(client, cmd, enactor)
 		case cmd.root
 		when "rpt"
-			case cmd.switch
-			when cmd.switch == arg1_equals_arg2q
+			args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+			when arg2.any?
 				return RPTCmd
 			end
 		end
