@@ -9,14 +9,16 @@ module AresMUSH
 			case cmd.switch
 			when "add"
 				return RPTModifyCmd
-			when "sub"
+			when "subtract"
 				return RPTModifyCmd
-			when "app"
+			when "approve"
 				return RPTApproveCmd
 			when "spend"
 				return RPTSpendCmd
-			else
+			when "request"
 				return RPTSubmitCmd
+			else
+				return RPTViewCmd
 			end
 		end
 		return nil
