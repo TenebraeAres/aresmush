@@ -12,9 +12,9 @@ module AresMUSH
 			def required_args
 				[self.title, self.desc]
 			end
-			
+
 			def handle
-				client.emit_success "RPTokens Accessed!"
+				client.emit_success "RP Tokens: #{self.title} #{self.desc}"
 			end
 		end
 	end
