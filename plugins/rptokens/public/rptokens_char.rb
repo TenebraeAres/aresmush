@@ -1,5 +1,5 @@
 module AresMUSH
   class Character
-    attribute :rpt
+    attribute :rpt, :type => DataType::Integer
   end
 end

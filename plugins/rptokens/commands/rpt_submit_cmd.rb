@@ -1,6 +1,6 @@
 module AresMUSH
 	module RPTokens
-		class RPTCmd
+		class RPTSubmitCmd
 			include CommandHandler
 			attr_accessor :title, :desc
 			

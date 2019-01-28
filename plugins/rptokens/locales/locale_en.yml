@@ -1,0 +1,4 @@
+en:
+    rpt:
+        tokens_given_to: "%{num} RP token(s) given to %{name}."
+        tokens_subtracted_from: "%{num} RP token(s) subtracted from %{name}."
