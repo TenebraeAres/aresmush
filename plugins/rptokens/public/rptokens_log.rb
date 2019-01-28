@@ -3,9 +3,9 @@ module AresMUSH
 		include ObjectModel
 		
 		reference :character, "AresMUSH::Character"
-		attribute :name
-		attribute :point, :type => DataType::Integer, :default => 0
 		attribute :reason
+		attribute :value, :type => DataType::Integer, :default => 0
+		attribute :awarder
 		attribute :date
 		
 		index :name
