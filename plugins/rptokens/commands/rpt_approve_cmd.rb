@@ -14,13 +14,24 @@ module AresMUSH
 				self.number = integer_arg(args.arg1)
 				self.reason = args.arg2
 			end
-
-			def required_args
-				[self.number, self.reason]
+			
+			def check_reason
+				self.reason = "%xgApproved!%xn" if self.reason == 0
 			end
 
 			def handle
-				client.emit_success "RP Tokens: #{self.name.upcase} #{self.number} #{self.reason}" 
+				job = Job[self.number]
+				if (!job)
+					client.emit_falure "That's not a valid job number!"
+					return
+				end
+				
+				if (job.category != "RPT")
+					client.emit_falure "That's not an RPT job!"
+					return
+				end
+				
+				client.emit_success "RPT Approved: #{self.number} #{self.reason}" 
 			end
 		end
 	end
