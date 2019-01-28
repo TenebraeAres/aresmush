@@ -1,5 +1,5 @@
 module AresMUSH
-	class RPTokensLog < Ohm::Model
+	class RPTokensTest < Ohm::Model
 		include ObjectModel
 		
 		reference :character, "AresMUSH::Character"
