@@ -11,23 +11,27 @@ module AresMUSH
 			
 			def parse_args	
 				args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
-				self.name = Character.find_one_by_name(args.arg1)
+				self.name = args.arg1
 				self.number = integer_arg(args.arg2)
 				self.reason = args.arg3
 			end
+			
+			def check_tokens
+				return "Bad tokens" if self.number == 0
+				return nil
+			end
 
 			def required_args
-				if self.name == 0 
-					client.emit_failure "Needs a valid player."
-				end
 				[self.name, self.number, self.reason]
 			end
 
 			def handle
-				if self.number == 0
-					client.emit_failure "Needs a valid number of RPTokens"
-				else
-					client.emit_success "RP Tokens: #{self.name} #{self.number} #{self.reason}" 
+				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+					if self.number == 0
+						client.emit_failure "Needs a valid number of RPTokens"
+					else
+						client.emit_success "RP Tokens: #{self.name} #{self.number} #{self.reason}" 
+					end
 				end
 			end
 		end

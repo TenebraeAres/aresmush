@@ -20,7 +20,7 @@ module AresMUSH
 			end
 
 			def handle
-				client.emit_success "RP Tokens: #{self.name} #{self.number} #{self.reason}" 
+				client.emit_success "RP Tokens: #{self.name.upcase} #{self.number} #{self.reason}" 
 			end
 		end
 	end
