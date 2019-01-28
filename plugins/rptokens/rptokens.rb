@@ -7,6 +7,8 @@ module AresMUSH
 		case cmd.root
 		when "rpt"
 			return RPTCmd
+		when "rpt/add"
+			return RPTAddCmd
 		end
 		return nil
 	end
