@@ -15,7 +15,7 @@ module AresMUSH
 			end
 
 			def handle
-				if self.name.blank?
+				if self.name?
 					client.emit_fail "Needs a valid player"
 				elsif self.number = 0
 					client.emit_fail "Needs a valid number of RPTokens"
