@@ -1,6 +1,7 @@
 module AresMUSH
 	module RPTokens
 		class  RPTUpdateNum
+			include CommandHandler
 			
 			def self.rpt_update(name, number, reason, enactor)
 				name.update(rpt: name.rpt.to_i + number)
