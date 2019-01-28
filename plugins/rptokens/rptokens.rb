@@ -6,12 +6,14 @@ module AresMUSH
 	def self.get_cmd_handler(client, cmd, enactor)
 		case cmd.root
 		when "rpt"
-		def parse_args	
-			args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-			if arg2.any?
-				return RPTCmd
+			def parse_args	
+				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+				if arg2.any?
+					return RPTCmd
+				else
+					client.emit_fail "RPTokens Failure!"
+				end
 			end
-		end
 		end
 		return nil
 	end
