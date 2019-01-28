@@ -26,8 +26,11 @@ module AresMUSH
 					client.emit_failure "That's not an RPT job!"
 					return
 				end
-				
-				client.emit_success "RPT Approved: #{self.number} #{self.reason} #{job.author_name}" 
+				ClassTargetFinder.with_a_character(job.author_name, client, enactor) do |model|
+					model.update(rpt: model.rpt + 1)
+					client.emit_success "RPT Approved: Job#" + job
+				end
+				Jobs.close_job(enactor, job, self.reason)
 			end
 		end
 	end
