@@ -18,8 +18,6 @@ module AresMUSH
 			else
 				return RPTSubmitCmd
 			end
-		else
-			return RPT
 		end
 		return nil
 	end
