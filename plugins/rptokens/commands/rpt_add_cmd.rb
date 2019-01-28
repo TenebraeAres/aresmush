@@ -27,7 +27,7 @@ module AresMUSH
 
 			def handle
 				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-					return rpt_update(model, self.number, self.reason)
+					return RPTUpdateNum.rpt_update(model, self.number, self.reason)
 				end
 			end
 		end
