@@ -6,9 +6,12 @@ module AresMUSH
 	def self.get_cmd_handler(client, cmd, enactor)
 		case cmd.root
 		when "rpt"
-			return RPTCmd
-		when "rpt/add"
-			return RPTAddCmd
+			case cmd.switch
+			when "add"
+				return RPTAddCmd
+			else
+				return RPTCmd
+			end
 		end
 		return nil
 	end
