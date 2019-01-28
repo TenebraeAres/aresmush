@@ -7,7 +7,7 @@ module AresMUSH
 		case cmd.root
 		when "rpt"
 			args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-			when arg2.any?
+			if arg2.any?
 				return RPTCmd
 			end
 		end
