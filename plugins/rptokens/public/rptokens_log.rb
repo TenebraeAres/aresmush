@@ -7,7 +7,6 @@ module AresMUSH
 		attribute :value, :type => DataType::Integer, :default => 0
 		attribute :awarder
 		attribute :date
-		
-		index :reason
+
 	end
 end
