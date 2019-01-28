@@ -36,7 +36,7 @@ module AresMUSH
 					end
 					client.emit_success message
 					model.update(rpt: model.rpt + tokens_to_add)
-					RPTokensLog.create(reason: self.reason, value: tokens_to_add, awarder: enactor.name, date: 
+					RPTokensLog.create(reason: self.reason, value: tokens_to_add, awarder: enactor.name, date:)
 				end
 			end
 		end
