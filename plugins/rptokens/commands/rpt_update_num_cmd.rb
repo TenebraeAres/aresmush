@@ -1,6 +1,6 @@
 module AresMUSH
 	module RPTokens
-		class  RPTUpdateNum (name, number, reason)
+		class  RPTUpdateNun
 			
 			attr_accessor :name, :number, :reason
 			
@@ -8,7 +8,7 @@ module AresMUSH
 			:number = number
 			:reason = reason
 			
-			name.update(rpt: model.rpt.to_i + self.number)
+			self.name.update(rpt: self.name.rpt.to_i + self.number)
 		end
 	end
 end
