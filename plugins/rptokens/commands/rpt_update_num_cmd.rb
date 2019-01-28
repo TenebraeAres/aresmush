@@ -3,7 +3,7 @@ module AresMUSH
 		class  RPTUpdateNum
 			
 			def self.rpt_update(name, number, reason)
-				name.update(rpt: name.rpt.to_i + self.number)
+				name.update(rpt: name.rpt.to_i + number)
 			end
 		end
 	end
