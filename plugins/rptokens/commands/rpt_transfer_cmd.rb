@@ -18,6 +18,7 @@ module AresMUSH
 					self.transferer = enactor
 				else
 					self.transferer = 
+				end
 				self.number = integer_arg(args.arg1)
 				self.reason = "Approved!%r%r" + args.arg2.to_s
 			end
