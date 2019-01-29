@@ -17,7 +17,7 @@ module AresMUSH
 				if (cmd.switch_is?("move"))
 					self.transferer = enactor
 				else
-					self.transferer = 
+					self.transferer = enactor ##needs to be fixed from here down
 				end
 				self.number = integer_arg(args.arg1)
 				self.reason = "Approved!%r%r" + args.arg2.to_s
@@ -29,7 +29,6 @@ module AresMUSH
 				end
 			end
 			
-			##
 			def handle
 				job = Job[self.number]
 				if (!job || !job.is_open?)
