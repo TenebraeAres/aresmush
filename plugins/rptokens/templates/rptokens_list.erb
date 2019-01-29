@@ -1,16 +1,16 @@
 <%= header %>
 %xh<%= char.name %>'s RP Tokens%xn
 <%= divider %>
-<%= left( "%xhReason%xn", 30 ) -%> 
+<%= left( "%xhReason%xn", 32 ) -%> 
 <%= center( "%xh|Amount%xn", 7 ) -%>
 <%= left( "|%xhAdded By%xn", 13 ) -%>
-<%= left( "|%xhDate%xn", 24 ) %>
+<%= left( "|%xhDate%xn", 26 ) %>
 <%= divider %>
 <% char.rpt_log.each do |log| %>
-<%= left( "#{log.reason}", 30 ) -%> 
+<%= left( "#{log.reason}", 32 ) -%> 
 |<%= center( "#{log.value}", 6 ) -%>
 <%= left( "|#{log.awarder}", 13 ) -%>
-<%= left( "|#{log.date}%r", 24 ) -%>
+<%= left( "|#{log.date}%r", 26 ) -%>
 <% end %>
 <%= divider %>
 %xhTotal RPTokens: <%= char.rpt %>%xn
