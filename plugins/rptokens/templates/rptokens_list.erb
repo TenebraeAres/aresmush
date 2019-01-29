@@ -7,10 +7,10 @@
 <%= left( "|%xhDate%xn", 26 ) %>
 <%= divider %>
 <% char.rpt_log.each do |log| %>
-<%= left( "#{log.reason}", 32 ) -%> 
+<%= left( "#{log.reason}", 31 ) -%> 
 |<%= center( "#{log.value}", 6 ) -%>
 <%= left( "|#{log.awarder}", 13 ) -%>
-<%= left( "|#{log.date}%r", 26 ) -%>
+<%= left( "|#{log.date}%r", 27 ) -%>
 <% end %>
 <%= divider %>
 %xhTotal RPTokens: <%= char.rpt %>%xn
