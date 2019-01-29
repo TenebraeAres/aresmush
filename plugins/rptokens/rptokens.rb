@@ -9,7 +9,7 @@ module AresMUSH
 			case cmd.switch
 			when "add"
 				return RPTModifyCmd
-			when "subtract"
+			when "remove"
 				return RPTModifyCmd
 			when "approve"
 				return RPTApproveCmd
@@ -17,6 +17,10 @@ module AresMUSH
 				return RPTSpendCmd
 			when "request"
 				return RPTSubmitCmd
+			when "move"
+				return RPTTransferCmd
+			when "transfer"
+				return RPTTransferCmd
 			else
 				return RPTViewCmd
 			end
