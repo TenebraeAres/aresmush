@@ -23,7 +23,7 @@ module AresMUSH
 			end
 
 			def check_alts
-				if ( 0=1 )
+				if ( 0==1 )
 					return client.emit_failure ("You may only move RPTs among alts.")
 				end
 			end
