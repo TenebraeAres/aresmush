@@ -29,6 +29,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(job.author_name, client, enactor) do |model|
 					model.update(rpt: model.rpt + 1)
 					client.emit_success "RPT Approved: Job# #{job.id}"
+					RPTokensLog.create(reason: job.title, value: 1, awarder: enactor.name, date: Time.now.strftime("%a %b %d %H:%M:%S %Y"), character: model)
 				end
 				Jobs.close_job(enactor, job, self.reason)
 			end

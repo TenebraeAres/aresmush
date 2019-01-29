@@ -28,6 +28,15 @@ module AresMUSH
 				end
 			end
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			def handle
 				job = Job[self.number]
 				if (!job || !job.is_open?)
