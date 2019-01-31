@@ -5,17 +5,19 @@ module AresMUSH
 			attr_accessor :transferer, :transferee, :number
 			
 			def check_approved
-				if (cmd.switch_is?("transfer"))
-					return nil if enactor.is_admin?
-					return t('dispatcher.not_allowed')
-				end
-				
+				return nil if enactor.is_approved? || enactor.is_admin?
+				return t('dispatcher.not_allowed')
 			end
 			
 			def parse_args	
-				args = cmd.parse_args(Custom.arg1_to_arg2_from_arg3)
-				self.transferer = args.arg3
-				self.transferee = args.arg2
+				args = cmd.parse_args(Custom.arg1_booltofrom_arg2)
+				if args.bool = "to"
+					self.transferer = enactor.name
+					self.transferee = args.arg2
+				else
+					self.transferee = enactor.name
+					self.transferer = args.arg2
+				end
 				self.number = integer_arg(args.arg1)
 			end
 			
@@ -31,7 +33,7 @@ module AresMUSH
 			def handle
 				self.transferer = Character.find_one_by_name(self.transferer)
 				self.transferee = Character.find_one_by_name(self.transferee)
-				
+
 				RPTokens.move_tokens(client, self.transferer, self.transferee, enactor, self.number, args.arg2, args.arg3)
 			end
 		end
