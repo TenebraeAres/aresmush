@@ -31,8 +31,13 @@ module AresMUSH
 						tokens_to_add = self.number
 						message = t('rpt.tokens_given_to', :num => self.number, :name => model.name)
 					else 
-						tokens_to_add = 0-self.number
-						message = t('rpt.tokens_subtracted_from', :num => self.number, :name => model.name)
+						if (model.rpt - self.number < 0)
+							client.emit_failure "#{model.name} doesn't have enough RP Tokens!"
+							return
+						else
+							tokens_to_add = 0-self.number
+							message = t('rpt.tokens_subtracted_from', :num => self.number, :name => model.name)
+						end
 					end
 					client.emit_success message
 					model.update(rpt: model.rpt + tokens_to_add)

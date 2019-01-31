@@ -13,38 +13,80 @@ module AresMUSH
 			end
 			
 			def parse_args	
-				args = cmd.parse_args(ArgParser.arg1_equals_arg2)
 				if (cmd.switch_is?("move"))
-					self.transferer = enactor
+					args = cmd.parse_args(Custom.arg1_booltofrom_arg2)
+					if args.bool = "to"
+						self.transferer = enactor.name
+						self.transferee = args.arg2
+					else
+						self.transferee = enactor.name
+						self.transferer = args.arg2
+					end
 				else
-					self.transferer = enactor ##needs to be fixed from here down
+					args = cmd.parse_args(Custom.arg1_to_arg2_from_arg3)
+					self.transferer = args.arg3
+					self.transferee = args.arg2
 				end
 				self.number = integer_arg(args.arg1)
-				self.reason = "Approved!%r%r" + args.arg2.to_s
-			end
-
-			def check_alts
-				if ( 0==1 )
-					return client.emit_failure ("You may only move RPTs among alts.")
-				end
 			end
 			
+			def required_args
+                [self.transferer, self.transferee, self.number]
+            end
+			
+            def check_tokens
+                return "Bad tokens" if self.number < 1
+                return nil
+            end
+			
 			def handle
-				job = Job[self.number]
-				if (!job || !job.is_open?)
-					client.emit_failure "That's not a valid job number!"
-					return
-				end
+				transferer = Character.find_one_by_name(transferer)
+				transferee = Character.find_one_by_name(transferee)
+
+				## If it's the move switch, check if valid and alts.
+				if (cmd.switch_is?("move")) 
+					if (!transferee || !transferer)
+						client.emit_failure "#{args.arg2} doesn't exist."
+						return
+					elsif not_alt ##Pending code
+						bad_name = Character.find_one_by_name(args.arg2)
+						client.emit_failure "#{bad_name} isn't your alt!"
+						return 
+					end
+
+				## Else if it's the transfer switch, check if names are valid and alts.
+				elsif (cmd.switch_is?("transfer")) 
+					if (!transferer)
+						client.emit_failure "#{args.arg3} doesn't exist."
+						return
+					elsif (!transferee)
+						client.emit_failure "#{args.arg2} doesn't exist."
+						return
+					elsif not_alt ##Pending code
+						client.emit_failure "#{self.trasferer.name} isn't an alt of #{self.trasferee.name}!"
+						return
+					end
 				
-				if (job.category != "RPT")
-					client.emit_failure "That's not an RPT job!"
+				## If all other checks are good, check if the transferer has enough points.
+				elsif (self.transferer.rpt - self.number < 0)
+					client.emit_failure "#{self.transferer.name} doesn't have enough RP Tokens!"
 					return
+				
+				## If all checks are good, do the transfer.
+				else
+					token_noun = self.number == 1 ? "Token" : "Tokens"
+					time = Time.now.strftime("%a %b %d %H:%M:%S %Y")
+
+					self.transferer.update(rpt: self.transferer.rpt - self.number)
+					description = "#{self.number} RP #{token_noun} transfered to #{self.transferee.name}"
+					RPTokensLog.create(reason: description, value: self.number, awarder: enactor.name, date: time, character: self.transferer)
+				
+					self.transferee.update(rpt: self.transferee.rpt + self.number)
+					description = "#{self.number} RP #{token_noun} transfered from #{self.transferer.name}"
+					RPTokensLog.create(reason: description, value: self.number, awarder: enactor.name, date: time, character: self.transferee)
+
+					client.emit_success "#{self.number} RP #{token_noun} transfered from #{self.transferer.name} to #{self.transferee.name}."
 				end
-				ClassTargetFinder.with_a_character(job.author_name, client, enactor) do |model|
-					model.update(rpt: model.rpt + 1)
-					client.emit_success "RPT Approved: Job# #{job.id}"
-				end
-				Jobs.close_job(enactor, job, self.reason)
 			end
 		end
 	end
