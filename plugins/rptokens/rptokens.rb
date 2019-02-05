@@ -1,9 +1,6 @@
 module AresMUSH
 	module RPTokens	
-		def check_approved
-			return nil if enactor.is_approved? || enactor.is_admin?
-			return t('dispatcher.not_allowed')
-		end
+
 		def self.plugin_dir
 			File.dirname(__FILE__)
 		end
