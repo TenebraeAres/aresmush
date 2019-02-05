@@ -34,10 +34,10 @@ module AresMUSH
 				self.transferer = Character.find_one_by_name(self.transferer)
 				self.transferee = Character.find_one_by_name(self.transferee)
 				
-				self.error = RPTokens.check_move(transferer, transferee, number)
+				self.error = RPTokens.check_move(self.transferer, self.transferee, self.number)
 				
 				if self.error.blank?
-					client.emit_success RPTokens.move_tokens(transferer, transferee, enactor, number)
+					client.emit_success RPTokens.move_tokens(self.transferer, self.transferee, self.enactor, self.number)
 				else
 					client.emit_failure self.error
 				end
