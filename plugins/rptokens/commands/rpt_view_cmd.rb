@@ -2,25 +2,25 @@ module AresMUSH
 	module RPTokens
 		class RPTViewCmd
 			include CommandHandler
-			attr_accessor :char, :error
+			attr_accessor :name
 			
 			def parse_args
 				if (!cmd.args)
-					self.char = enactor
+					self.name = enactor.name
 				else
-					self.char = cmd.args
+					self.name = cmd.args
 				end
 			end
 			
 			def handle
-				self.char = Character.find_one_by_name(self.char)
+				char = Character.find_one_by_name(self.name)
 				
-				self.error = Custom.alt_check(enactor, self.char)
+				error = Custom.alt_check(enactor, char)
 				
 				if (!error)
 					return error
 				else
-					template = RPTokensListTemplate.new self.char.name
+					template = RPTokensListTemplate.new self.name
 					client.emit template.render
 				end
 			end
