@@ -10,16 +10,18 @@ module AresMUSH
 				case cmd.switch
 				when "add"
 					return RPTModifyCmd
-				when "remove"
-					return RPTModifyCmd
 				when "approve"
 					return RPTApproveCmd
-				when "spend"
-					return RPTSpendCmd
-				when "request"
-					return RPTSubmitCmd
+				when "deny"
+					return RPTDenyCmd
 				when "move"
 					return RPTMoveCmd
+				when "remove"
+					return RPTModifyCmd
+				when "request"
+					return RPTSubmitCmd
+				when "spend"
+					return RPTSpendCmd
 				when "transfer"
 					return RPTTransferCmd
 				else
