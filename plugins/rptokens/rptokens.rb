@@ -1,6 +1,8 @@
 module AresMUSH
 	module RPTokens	
-
+		def self.shortcuts
+			Global.read_config("forum", "shortcuts")
+		end
 		def self.plugin_dir
 			File.dirname(__FILE__)
 		end
