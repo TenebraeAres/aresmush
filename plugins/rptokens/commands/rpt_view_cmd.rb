@@ -14,10 +14,7 @@ module AresMUSH
 
 			def check_approved
 				if enactor.name != self.name
-					return nil if enactor.is_admin?
-					return t('dispatcher.not_allowed')
-				end
-				unless AresCentral.are_chars_linked?(transferor, transferee)
+					return nil if enactor.is_admin? || AresCentral.are_chars_linked?(enactor, name)
 					return t('dispatcher.not_allowed')
 				end
 			end
