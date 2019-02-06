@@ -1,7 +1,7 @@
 module AresMUSH
 	module Custom
 		def self.arg1_booltofrom_arg2
-			/(?<arg1>.*?) (?<bool>to|from) (?<arg2>.*?)/
+			/(?<arg1>.*?) (?<bool>to|from) (?<arg2>.*)/
 		end
 
 		def self.arg1_booltofrom_arg2_slash_arg3
