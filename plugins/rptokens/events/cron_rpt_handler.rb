@@ -1,7 +1,7 @@
 module AresMUSH
 	module RPTokens
 		class RPTJobProcessEvent
-			def on_event(CronEvent)
+			def on_event(event)
 				config = Global.read_config("rptokens", "rpt_cron")
 				return if !Cron.is_cron_match?(config, event.time)
 				
