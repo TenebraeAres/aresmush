@@ -11,7 +11,7 @@ module AresMUSH
 			
 			def parse_args	
 				args = cmd.parse_args(Custom.arg1_booltofrom_arg2)
-				if args.bool.trim = "to"
+				if args.bool == "to"
 					self.transferor = enactor.name
 					self.transferee = args.arg2
 				else
