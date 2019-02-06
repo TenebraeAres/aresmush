@@ -2,7 +2,7 @@ module AresMUSH
 	module RPTokens
 		class RPTTransferCmd
 			include CommandHandler
-			attr_accessor :transferer, :transferee, :number, :error, :name1, :name2
+			attr_accessor :transferor, :transferee, :number, :error, :name1, :name2
 			
 			def check_approved
 				if (cmd.switch_is?("transfer"))
@@ -14,7 +14,7 @@ module AresMUSH
 			
 			def parse_args	
 				args = cmd.parse_args(Custom.arg1_to_arg2_from_arg3)
-				self.transferer = args.arg3
+				self.transferor = args.arg3
 				self.name1 = args.arg3
 				self.transferee = args.arg2
 				self.name2 = args.arg2
@@ -22,7 +22,7 @@ module AresMUSH
 			end
 			
 			def required_args
-                [self.transferer, self.transferee, self.number]
+                [self.transferor, self.transferee, self.number]
             end
 			
             def check_tokens
@@ -31,13 +31,13 @@ module AresMUSH
             end
 			
 			def handle
-				self.transferer = Character.find_one_by_name(self.transferer)
+				self.transferor = Character.find_one_by_name(self.transferor)
 				self.transferee = Character.find_one_by_name(self.transferee)
 				
-				self.error = RPTokens.check_transfer(self.transferer, self.transferee, self.number, self.name2, self.name1)
+				self.error = RPTokens.check_transfer(self.transferor, self.transferee, self.number, self.name2, self.name1)
 				
 				if self.error.blank?
-					client.emit_success RPTokens.move_tokens(self.transferer, self.transferee, self.enactor, self.number)
+					client.emit_success RPTokens.move_tokens(self.transferor, self.transferee, self.enactor, self.number)
 				else
 					client.emit_failure self.error
 				end
