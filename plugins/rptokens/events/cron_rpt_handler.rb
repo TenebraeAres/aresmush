@@ -7,7 +7,7 @@ module AresMUSH
 				
 				Job.all.select { |j| j.category == "RPT" && j.is_open? &&
 				  ((Time.now - j.created_at) / 86400) >= 2}.each do |j|
-					client.emit_success "Job ##{j.id}"
+					Global.client_monitor.emit_all "Job ##{j.id}"
 				end
 			end
 		end
