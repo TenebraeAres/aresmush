@@ -1,6 +1,6 @@
 module AresMUSH
 	module RPTokens
-		class RPTTransferCmd
+		class RPTMoveCmd
 			include CommandHandler
 			attr_accessor :transferor, :transferee, :number, :error
 			
