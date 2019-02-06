@@ -2,7 +2,7 @@ module AresMUSH
 	module RPTokens
 		class RPTTransferCmd
 			include CommandHandler
-			attr_accessor :transferer, :transferee, :number, :error, name1, name2
+			attr_accessor :transferer, :transferee, :number, :error, :name1, :name2
 			
 			def check_approved
 				if (cmd.switch_is?("transfer"))
@@ -34,7 +34,7 @@ module AresMUSH
 				self.transferer = Character.find_one_by_name(self.transferer)
 				self.transferee = Character.find_one_by_name(self.transferee)
 				
-				self.error = RPTokens.check_transfer(self.transferer, self.transferee, self.number, name2, name1)
+				self.error = RPTokens.check_transfer(self.transferer, self.transferee, self.number, self.name2, self.name1)
 				
 				if self.error.blank?
 					client.emit_success RPTokens.move_tokens(self.transferer, self.transferee, self.enactor, self.number)
