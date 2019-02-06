@@ -14,7 +14,7 @@ module AresMUSH
 		end
 		
 		
-		def self.check_transfer(transferer, transferee, number, name1, name2)
+		def self.check_transfer(transferer, transferee, number, name2, name1)
 			
 			if (!transferer || !transferee)
 				message = ""
