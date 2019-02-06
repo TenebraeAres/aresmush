@@ -7,6 +7,9 @@ module AresMUSH
 			elsif !AresCentral.are_chars_linked?(transferor, transferee)
 				return "That charcter isn't an alt of yours! "
 			end
+			if (transferor == transferee)
+				return "You cannot move tokens to the same person."
+			end
 			if (transferor.rpt - number < 0)
 				return "#{transferor.name} doesn't have enough RP Tokens!"
 			end
@@ -25,6 +28,9 @@ module AresMUSH
 					message << "#{name2} doesn't exist."
 				end
 				return message
+			end
+			if (transferor == transferee)
+				return "You cannot transfer tokens to the same person."
 			end
 			unless AresCentral.are_chars_linked?(transferor, transferee)
 				return "#{transferor.name} isn't an alt of #{transferee.name}!"
