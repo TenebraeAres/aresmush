@@ -27,7 +27,7 @@ module AresMUSH
 				return message
 			end
 			unless AresCentral.are_chars_linked?(transferer, transferee)
-				return "#{trasferer.name} isn't an alt of #{trasferee.name}!"
+				return "#{transferer.name} isn't an alt of #{transferee.name}!"
 			end
 			if (transferer.rpt - number < 0)
 				return "#{transferer.name} doesn't have enough RP Tokens!"
