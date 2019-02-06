@@ -7,7 +7,7 @@ module AresMUSH
 			elsif AresCentral.are_chars_linked?(transferer, transferee)
 				return "That charcter isn't an alt of yours! "
 			end
-			if (self.transferer.rpt - number < 0)
+			if (transferer.rpt - number < 0)
 				return "#{transferer.name} doesn't have enough RP Tokens!"
 			end
 			
@@ -29,7 +29,7 @@ module AresMUSH
 			if AresCentral.are_chars_linked?(transferer, transferee)
 				return "#{trasferer.name} isn't an alt of #{trasferee.name}!"
 			end
-			if (self.transferer.rpt - number < 0)
+			if (transferer.rpt - number < 0)
 				return "#{transferer.name} doesn't have enough RP Tokens!"
 			end
 			
