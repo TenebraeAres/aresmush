@@ -17,6 +17,9 @@ module AresMUSH
 					return nil if enactor.is_admin?
 					return t('dispatcher.not_allowed')
 				end
+				unless AresCentral.are_chars_linked?(transferor, transferee)
+					return t('dispatcher.not_allowed')
+				end
 			end
 			
 			def handle
