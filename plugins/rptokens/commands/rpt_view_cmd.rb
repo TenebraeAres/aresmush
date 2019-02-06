@@ -18,10 +18,10 @@ module AresMUSH
 				error = Custom.alt_check(enactor, char)
 				
 				if (!error)
-					client.emit_failure error
-				else
 					template = RPTokensListTemplate.new self.name
 					client.emit template.render
+				else
+					client.emit_failure error
 				end
 			end
 		end
