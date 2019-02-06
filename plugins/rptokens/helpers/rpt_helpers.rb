@@ -4,7 +4,7 @@ module AresMUSH
 
 			if (!transferer || !transferee)
 				return "That character doesn't exist. %r"
-			elsif AresCentral.are_chars_linked?(transferer, transferee)
+			elsif !AresCentral.are_chars_linked?(transferer, transferee)
 				return "That charcter isn't an alt of yours! "
 			end
 			if (transferer.rpt - number < 0)
@@ -26,7 +26,7 @@ module AresMUSH
 				end
 				return message
 			end
-			if AresCentral.are_chars_linked?(transferer, transferee)
+			unless AresCentral.are_chars_linked?(transferer, transferee)
 				return "#{trasferer.name} isn't an alt of #{trasferee.name}!"
 			end
 			if (transferer.rpt - number < 0)
