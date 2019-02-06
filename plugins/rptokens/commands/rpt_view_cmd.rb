@@ -2,7 +2,7 @@ module AresMUSH
 	module RPTokens
 		class RPTViewCmd
 			include CommandHandler
-			attr_accessor :name
+			attr_accessor :name, :error
 			
 			def parse_args
 				if (!cmd.args)
@@ -11,17 +11,16 @@ module AresMUSH
 					self.name = cmd.args
 				end
 			end
-
-			def check_approved
-				if enactor.name != self.name
-					return nil if enactor.is_admin?
-					return t('dispatcher.not_allowed')
-				end
-			end
 			
 			def handle
-				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-					template = RPTokensListTemplate.new model
+				self.name = Character.find_one_by_name(self.name)
+				
+				self.error = Custom.alt_check(enactor, self.name)
+				
+				if (!error)
+					return error
+				else
+					template = RPTokensListTemplate.new self.name
 					client.emit template.render
 				end
 			end
