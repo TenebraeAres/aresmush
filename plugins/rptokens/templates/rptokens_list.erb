@@ -6,7 +6,7 @@
 %xb|%xn<%= left( "%xhAdded By%xn", 13 ) -%>
 %xb|%xn<%= left( "%xhDate%xn", 24 ) %>
 <%= divider %>
-<% char.rpt_log.last(5) do |log| %>
+<% char.rpt_log.last(5).each do |log| %>
 <%= left( "#{log.reason}", 34 ) -%> 
 %xb|%xn<%= right( "#{log.value}", 4 ) -%>
 %xb|%xn<%= left( "#{log.awarder}", 13 ) -%>
