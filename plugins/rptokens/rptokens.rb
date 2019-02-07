@@ -1,5 +1,12 @@
 module AresMUSH
-	module RPTokens	
+	module RPTokens
+		def self.get_event_handler(event_name)
+			case event_name
+			when "CronEvent"
+				return RPTJobProcessEvent
+			end
+			nil
+		end
 		def self.shortcuts
 			Global.read_config("forum", "shortcuts")
 		end
