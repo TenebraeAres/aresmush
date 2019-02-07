@@ -3,7 +3,7 @@ module AresMUSH
 		# Template for the list of RPTokens.
 		class RPTokensListTemplate < ErbTemplateRenderer
 	
-			attr_accessor :char
+			attr_accessor :char, :ct
 			
 			def initialize(char, ct)
 				@char = char
