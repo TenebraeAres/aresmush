@@ -12,6 +12,8 @@ module AresMUSH
 				case cmd.switch
 				when "add"
 					return RPTModifyCmd
+				when "all"
+					return RPTViewCmd
 				when "approve"
 					return RPTApproveCmd
 				when "deny"

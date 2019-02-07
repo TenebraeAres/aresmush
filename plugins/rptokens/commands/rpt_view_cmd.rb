@@ -20,7 +20,7 @@ module AresMUSH
 				if cmd.switch == "all"
 					ct = char.rpt_log.size
 				else
-					ct = 5
+					ct = 15
 				end
 				
 				if (!error)
