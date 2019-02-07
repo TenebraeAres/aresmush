@@ -5,8 +5,9 @@ module AresMUSH
 	
 			attr_accessor :char
 			
-			def initialize(char)
+			def initialize(char, ct)
 				@char = char
+				@ct = ct
 				super File.dirname(__FILE__) + "/rptokens_list.erb"
 			end
 		end
