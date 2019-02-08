@@ -18,7 +18,7 @@ module AresMUSH
 				error = Custom.alt_check(enactor, char)
 				
 				if (!error)
-					paginator = Paginator.paginate(char.rpt_log.to_a.reverse, cmd.page, 20)
+					paginator = Paginator.paginate(char.rpt_log.to_a.reverse, cmd.page, 15)
 					template = RPTokensListTemplate.new(char, paginator)
 					client.emit template.render
 				else
