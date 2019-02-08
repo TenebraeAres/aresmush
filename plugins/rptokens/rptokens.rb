@@ -12,8 +12,6 @@ module AresMUSH
 				case cmd.switch
 				when "add"
 					return RPTModifyCmd
-				when "all"
-					return RPTViewCmd
 				when "approve"
 					return RPTApproveCmd
 				when "deny"
@@ -28,7 +26,7 @@ module AresMUSH
 					return RPTSpendCmd
 				when "transfer"
 					return RPTTransferCmd
-				else
+				when nil
 					return RPTViewCmd
 				end
 			end
