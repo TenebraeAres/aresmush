@@ -18,8 +18,7 @@ module AresMUSH
 			def check_length
 				count = self.desc.scan(/[^\.!?]+[\.!?]/).map(&:strip).count
 				if count < 3
-					client.emit_failure "Please resubmit with more about the scene."
-					return
+					return client.emit_failure "Please resubmit with more about the scene."
 				else
 					nil
 				end	
