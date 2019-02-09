@@ -16,12 +16,7 @@ module AresMUSH
 			end
 			
 			def check_length
-				count = self.desc.scan(/[^\.!?]+[\.!?]/).map(&:strip).count
-				if count < 3
-					return client.emit_failure "Please resubmit with more about the scene."
-				else
-					nil
-				end	
+	
 			end
 
 			def required_args
@@ -29,9 +24,14 @@ module AresMUSH
 			end
 
 			def handle
-				self.desc = "Players: #{enactor.name} %r%r" + self.desc
-				Jobs.create_job("RPT", self.title, self.desc, enactor)
-				client.emit_success "Your RPT request is successfully submitted!"
+				count = self.desc.scan(/[^\.!?]+[\.!?]/).map(&:strip).count
+				if count < 3
+					client.emit_failure "Please resubmit with more about the scene."
+				else
+					self.desc = "Players: #{enactor.name} %r%r" + self.desc
+					Jobs.create_job("RPT", self.title, self.desc, enactor)
+					client.emit_success "Your RPT request is successfully submitted!"
+				end
 			end
 		end
 	end
