@@ -14,10 +14,6 @@ module AresMUSH
 				self.title = args.arg1
 				self.desc = args.arg2.to_s
 			end
-			
-			def check_length
-	
-			end
 
 			def required_args
 				[self.title, self.desc]
