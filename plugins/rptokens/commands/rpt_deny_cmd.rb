@@ -27,7 +27,7 @@ module AresMUSH
 					return
 				end
 				Jobs.close_job(enactor, job, self.reason)
-				client.emit_success "#{enactor.name} denied and closed job ##{job.id}"
+				client.emit_success "#{enactor} denied and closed job ##{job.id}"
 			end
 		end
 	end

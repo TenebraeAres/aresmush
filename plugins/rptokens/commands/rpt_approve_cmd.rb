@@ -34,7 +34,7 @@ module AresMUSH
 					RPTokensLog.create(reason: job.title, value: 1, awarder: enactor.name, date: Time.now.strftime("%a %b %d %H:%M:%S %Y"), character: model)
 				end
 				Jobs.close_job(enactor, job, self.reason)
-				client.emit_success "#{enactor.name} approved and closed job ##{job.id}"
+				client.emit_success "#{enactor} approved and closed job ##{job.id}"
 			end
 		end
 	end
