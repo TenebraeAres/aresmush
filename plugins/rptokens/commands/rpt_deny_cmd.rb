@@ -26,8 +26,8 @@ module AresMUSH
 					client.emit_failure "That's not an RPT job!"
 					return
 				end
-				client.emit_success "RPT Denied: Job# #{job.id}"
 				Jobs.close_job(enactor, job, self.reason)
+				client.emit_success "#{enactor.name} denied and closed job ##{job.id}"
 			end
 		end
 	end
