@@ -1,6 +1,6 @@
 module AresMUSH
   module Custom
-    class SetGoalsCmd
+    class SetSparkleCmd
       include CommandHandler
       
       attr_accessor :sparkle
