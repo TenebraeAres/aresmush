@@ -11,7 +11,7 @@ module AresMUSH
 
       def handle
         enactor.update(sparkle: self.sparkle)
-        client.emit_success "You sparkle like a true elf!"
+        client.emit_success "You sparkle over #{self.sparkle}! Like a true elf!"
       end
     end
   end
