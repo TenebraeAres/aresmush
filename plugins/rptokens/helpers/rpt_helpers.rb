@@ -1,14 +1,14 @@
 module AresMUSH
 	module RPTokens
-		def self.check_move(transferor, transferee, number)
+		def self.check_move(transferor, transferee, number, name)
 
 			if (!transferor || !transferee)
-				return "That character doesn't exist. %r"
+				return "#{name} doesn't exist."
 			elsif !AresCentral.are_chars_linked?(transferor, transferee)
-				return "That charcter isn't an alt of yours! "
+				return "#{name} isn't an alt of yours!"
 			end
 			if (transferor == transferee)
-				return "You cannot move tokens to the same person."
+				return "You cannot move tokens to yourself."
 			end
 			if (transferor.rpt - number < 0)
 				return "#{transferor.name} doesn't have enough RP Tokens!"

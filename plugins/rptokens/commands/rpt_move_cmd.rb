@@ -2,7 +2,7 @@ module AresMUSH
 	module RPTokens
 		class RPTMoveCmd
 			include CommandHandler
-			attr_accessor :transferor, :transferee, :number, :error
+			attr_accessor :transferor, :transferee, :number, :error, :name
 			
 			def check_approved
 				return nil if enactor.is_approved? || enactor.is_admin?
@@ -18,6 +18,7 @@ module AresMUSH
 					self.transferee = enactor.name
 					self.transferor = args.arg2
 				end
+				self.name = args.arg2
 				self.number = integer_arg(args.arg1)
 			end
 			
@@ -34,7 +35,7 @@ module AresMUSH
 				self.transferor = Character.find_one_by_name(self.transferor)
 				self.transferee = Character.find_one_by_name(self.transferee)
 				
-				self.error = RPTokens.check_move(self.transferor, self.transferee, self.number)
+				self.error = RPTokens.check_move(self.transferor, self.transferee, self.number, self.name)
 				
 				if self.error.blank?
 					client.emit_success RPTokens.move_tokens(self.transferor, self.transferee, self.enactor, self.number)

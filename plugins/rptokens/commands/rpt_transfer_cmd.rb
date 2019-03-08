@@ -9,10 +9,9 @@ module AresMUSH
 					return nil if enactor.is_admin?
 					return t('dispatcher.not_allowed')
 				end
-				
 			end
 			
-			def parse_args	
+			def parse_args
 				args = cmd.parse_args(Custom.arg1_to_arg2_from_arg3)
 				self.transferor = args.arg3
 				self.name1 = args.arg3
