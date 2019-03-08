@@ -23,7 +23,7 @@ module AresMUSH
       
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc)
       if (!scene_pose.is_system_pose?)
-        scene.participants.add character
+        Scenes.add_participant(scene, character)
       end
       
       scene.mark_unread(character)
@@ -49,6 +49,27 @@ module AresMUSH
         scene.invited.delete char
       end
       Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_uninvited', :name => enactor.name, :num => scene.id))
+    end
+    
+    def self.start_scene(enactor, location, private_scene, scene_type, temp_room)
+      scene = Scene.create(owner: enactor, 
+          location: location, 
+          private_scene: private_scene,
+          scene_type: scene_type,
+          temp_room: temp_room,
+          icdate: ICTime.ictime.strftime("%Y-%m-%d"))
+
+      Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{temp_room ? 'temp room' : enactor.room.name}."
+          
+      if (temp_room)
+        room = Scenes.create_scene_temproom(scene)
+      else
+        room = enactor.room
+        room.update(scene: scene)
+        scene.update(room: room)
+        room.emit_ooc t('scenes.announce_scene_start', :privacy => private_scene ? "Private" : "Open", :name => enactor.name, :num => scene.id)
+      end
+      return scene
     end
     
   end

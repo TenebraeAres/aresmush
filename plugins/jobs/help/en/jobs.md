@@ -38,7 +38,7 @@ Valid filters are:
 * (Category Name) - Active jobs in the given category.
 * All - All jobs.
 
-`jobs/filer <flter>` - Filters the jobs list.
+`jobs/filter <flter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
 
 ## Creating Jobs
@@ -46,7 +46,7 @@ Valid filters are:
 Jobs can be created by players using the `request` command, by coded systems (e.g. apps), or manually.
 
 `job/create <title>` - Creates a new job (REQ category)
-`job/create <category>=<title>/<description>` - Creates a new job
+`job/create <title>=<category>/<description>` - Creates a new job
         Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
 `job/query <player>=<title>/<description>` - Submit a request on behalf of someone.
 
