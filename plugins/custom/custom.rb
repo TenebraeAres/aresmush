@@ -16,6 +16,8 @@ module AresMUSH
 			case cmd.switch
 			when "set"
 				return SetSparkleCmd
+			else 
+				return SparkleCmd
 			end
 		end
 	  return nil
