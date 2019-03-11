@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: Commands Playpen
 summary: Setting sparkle level.
 ---
 # Sparkle
