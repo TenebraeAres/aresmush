@@ -29,10 +29,13 @@ module AresMUSH
 		case cmd.switch
 		when "set"
 		  return SetGuacCmd
+		else
+		  return GuacCmd
 		end
 	  end
 	  return nil
 	end
+	
 	
   end
 end
