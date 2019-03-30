@@ -22,5 +22,17 @@ module AresMUSH
 		end
 	  return nil
 	end
+	
+	def self.get_cmd_handler(client, cmd, enactor)
+	  case cmd.root
+	  when "guac"
+		case cmd.switch
+		when "set"
+		  return SetGuacCmd
+		end
+	  end
+	  return nil
+	end
+	
   end
 end
